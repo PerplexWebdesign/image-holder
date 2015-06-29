@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Image Holder</title>
+
+	<style>
+	
+		*, html {margin: 0; padding: 0;}
+		body {padding: 10vh 30vw 0;}
+		.image-holder {width: 40vw; height: 80vh; margin-bottom: 10vh;}
+
+		.image-holder { overflow: hidden; position: relative;}
+		.image-holder img { display: block; position: absolute; margin: auto; width: 110%; }
+		.image-holder img.portrait {width: 100%; height: auto; top: -9999px; bottom: -9999px; }
+		.image-holder img.landscape {width: auto; height: 100%; right: -9999px; left: -9999px;}
+
+	</style>
+</head>
+<body>
+
+	<div class="image-holder"> <img src="https://download.unsplash.com/photo-1429198739803-7db875882052" alt=""> </div>
+	<div class="image-holder"> <img src="https://download.unsplash.com/photo-1429966163023-c132bc887fdd" alt=""> </div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script>
+	$(window).load(function(){ // script uitvoeren nadat alle afbeeldingen geladen zijn, zodat aspect ratio bepaald kan worden
+		$('.image-holder img').each(function(){ 
+    		$(this).addClass(this.width > this.height ? 'landscape' : 'portrait');
+		});
+	})
+	</script>
+	
+</body>
+</html>
